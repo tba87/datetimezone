@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        maven 'Maven-3.8.6'  // Name from Global Tools
+    }
     stages {
         stage('Checkout') {
             steps {
