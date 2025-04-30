@@ -8,10 +8,9 @@ pipeline {
             steps {
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/tba87/datetimezone.git']])
             }
-        }
-        stage('Build') {
+          stage('Build') {
             steps {
-                sh './mvnw clean package'
+                sh 'mvnw clean package'
             }
         }
         stage('Docker Build') {
@@ -24,7 +23,7 @@ pipeline {
                 sh '''
                 docker stop datetimezone-app || true
                 docker rm datetimezone-app || true
-                docker run -d -p 8880:8080 --name datetimezone-app datetimezone-app
+                docker run -d -p 8181:8080 --name datetimezone-app${BUILD_ID} datetimezone-app
                 '''
             }
         }
