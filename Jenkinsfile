@@ -10,7 +10,7 @@ pipeline {
             }
           stage('Build') {
             steps {
-                sh 'mvnw clean package'
+                sh 'mvn clean package'
             }
         }
         stage('Docker Build') {
