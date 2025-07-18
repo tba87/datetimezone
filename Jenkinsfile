@@ -30,7 +30,7 @@ pipeline {
                 sh '''
                 docker stop datetimezone-app || true
                 docker rm datetimezone-app || true
-                // CORRECTED: Using a consistent container name if only one instance is desired
+                #CORRECTED: Using a consistent container name if only one instance is desired
                 docker run -d -p 8181:8080 --name datetimezone-app datetimezone-app
                 '''
             }
