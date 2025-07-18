@@ -8,7 +8,8 @@ pipeline {
             steps {
                 checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/tba87/datetimezone.git']])
             }
-          stage('Build') {
+        }
+        stage('Build') {
             steps {
                 sh './mvn clean package'
             }
@@ -28,5 +29,4 @@ pipeline {
             }
         }
     }
-}
 }
